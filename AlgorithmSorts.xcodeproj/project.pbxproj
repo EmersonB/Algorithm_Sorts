@@ -15,6 +15,8 @@
 		63E191F9241880A200F539B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E191F7241880A200F539B8 /* LaunchScreen.storyboard */; };
 		63E19201241882FC00F539B8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E19200241882FC00F539B8 /* TableViewController.swift */; };
 		63E1920924188CE000F539B8 /* IOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1920824188CE000F539B8 /* IOSDevCenters+GIF.swift */; };
+		A76F21F8241AF97D00238F8D /* QuickSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76F21F7241AF97D00238F8D /* QuickSortViewController.swift */; };
+		A76F21FA241C179800238F8D /* InsertionSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76F21F9241C179800238F8D /* InsertionSortViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		63E19200241882FC00F539B8 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		63E1920224188B7200F539B8 /* AlgorithmSorts-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlgorithmSorts-Bridging-Header.h"; sourceTree = "<group>"; };
 		63E1920824188CE000F539B8 /* IOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		A76F21F7241AF97D00238F8D /* QuickSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSortViewController.swift; sourceTree = "<group>"; };
+		A76F21F9241C179800238F8D /* InsertionSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSortViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				63E191EE241880A000F539B8 /* SceneDelegate.swift */,
 				63E191F0241880A000F539B8 /* ViewController.swift */,
 				63E191F2241880A000F539B8 /* Main.storyboard */,
+				A76F21F9241C179800238F8D /* InsertionSortViewController.swift */,
+				A76F21F7241AF97D00238F8D /* QuickSortViewController.swift */,
 				63E19200241882FC00F539B8 /* TableViewController.swift */,
 				63E191F5241880A200F539B8 /* Assets.xcassets */,
 				63E191F7241880A200F539B8 /* LaunchScreen.storyboard */,
@@ -151,6 +157,8 @@
 				63E191ED241880A000F539B8 /* AppDelegate.swift in Sources */,
 				63E191EF241880A000F539B8 /* SceneDelegate.swift in Sources */,
 				63E1920924188CE000F539B8 /* IOSDevCenters+GIF.swift in Sources */,
+				A76F21F8241AF97D00238F8D /* QuickSortViewController.swift in Sources */,
+				A76F21FA241C179800238F8D /* InsertionSortViewController.swift in Sources */,
 				63E19201241882FC00F539B8 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +307,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS2Z99TGR8;
 				INFOPLIST_FILE = AlgorithmSorts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,6 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS2Z99TGR8;
 				INFOPLIST_FILE = AlgorithmSorts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

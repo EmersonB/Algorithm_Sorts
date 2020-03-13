@@ -1,20 +1,20 @@
 //
-//  ViewController.swift
+//  InsertionSortViewController.swift
 //  AlgorithmSorts
 //
-//  Created by Emerson Berlik on 3/10/20.
+//  Created by Rohan Taneja on 3/13/20.
 //  Copyright © 2020 Emerson Berlik. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class InsertionSortViewController: UIViewController {
     
     var sliderLabel = UILabel()
     let sortedLabel = UILabel()
-    let comparisonsLabel = UILabel()
+    let shiftsLabel = UILabel()
     var num_elements = 0;
-    var comparisons = 0;
+    var shifts = 0;
     @objc func backAction(){
         //print("Back Button Clicked")
         self.navigationController?.popViewController(animated: true)
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
-        let gifURL : String = "https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif"
+        let gifURL : String = "https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif"
         let imageURL = UIImage.gifImageWithURL(gifURL)
         let imageView = UIImageView(image: imageURL)
         imageView.frame = CGRect(x: 20.0, y: 50.0, width: self.view.frame.size.width - 40, height: 150.0)
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         slider.maximumValue = 100
         sliderLabel.text = "0"
         sliderLabel.frame = CGRect(x: 20.0, y:50.0, width: self.view.frame.size.width - 100, height: 20.0)
-        slider.addTarget(self, action: #selector(ViewController.sliderValueDidChange(_:)), for: .valueChanged)
+        slider.addTarget(self, action: #selector(InsertionSortViewController.sliderValueDidChange(_:)), for: .valueChanged)
         slider.frame = CGRect(x: 20.0, y:70.0, width: self.view.frame.size.width - 100, height: 20.0)
         let mainView = UIView()
         mainView.frame = CGRect(x:20.0,y:200.0,width:self.view.frame.size.width - 40, height:150.0)
@@ -46,23 +46,24 @@ class ViewController: UIViewController {
         button.setTitle("Sort", for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         sortedLabel.frame = CGRect(x: 20.0, y:150.0, width: self.view.frame.size.width - 100, height: 20.0)
-        comparisonsLabel.frame = CGRect(x: 20.0, y:170.0, width: self.view.frame.size.width - 100, height: 20.0)
+        shiftsLabel.frame = CGRect(x: 20.0, y:170.0, width: self.view.frame.size.width - 100, height: 20.0)
         mainView.addSubview(sortedLabel)
-        mainView.addSubview(comparisonsLabel)
+        mainView.addSubview(shiftsLabel)
         mainView.addSubview(button)
         view.addSubview(mainView)
 
     }
     
     @objc func buttonAction(sender: UIButton!) {
-        let merge_me = Array(getRandomNumbers(maxNumber: 100,listSize: num_elements))
-        print(merge_me)
-        let result = mergeSort(merge_me)
-        print("sort me")
-        print(result)
+        var insertion_me = Array(getRandomNumbers(maxNumber: 100,listSize: num_elements))
+        print("Unsorted list ", insertion_me)
+        print("sorting...")
+        let result = insertionSort(array: &insertion_me)
+        print("Sorted list ",result)
         sortedLabel.text = result.description
-        comparisonsLabel.text = "Total # of Comparisons: " + String(comparisons)
-        comparisons = 0
+        shiftsLabel.text = "Total # of Shifts: " + String(shifts)
+        shifts = 0
+        
     }
     
     @objc func sliderValueDidChange(_ sender:UISlider!)
@@ -84,56 +85,20 @@ class ViewController: UIViewController {
         return randomNumbers
     }
     
-    func mergeSort(_ array: [Int]) -> [Int] {
-      guard array.count > 1 else { return array }
-
-      let middleIndex = Int(array.count / 2)
-      
-      let leftArray = mergeSort(Array(array[0..<middleIndex]))
-      let rightArray = mergeSort(Array(array[middleIndex..<array.count]))
-      
-      // here
-      return merge(leftArray, rightArray)
+    func insertionSort(array: inout [Int]) -> [Int] {
+        guard array.count > 0 else { return array }
+        for i in 1..<array.count{
+            var curr = array[i]
+            var previous_index = i - 1
+            while(previous_index >= 0 && array[previous_index] > curr){
+                array[previous_index + 1] = array[previous_index]
+                previous_index -= 1
+                shifts += 1
+            }
+            array[previous_index + 1] = curr
+        }
+        return array
     }
     
-    func merge(_ left: [Int], _ right: [Int]) -> [Int] {
-      var leftIndex = 0
-      var rightIndex = 0
-
-      var orderedArray: [Int] = []
-      
-      // 1
-      while leftIndex < left.count && rightIndex < right.count {
-        // 1
-        let leftElement = left[leftIndex]
-        let rightElement = right[rightIndex]
-        comparisons += 1
-        if leftElement < rightElement { // 2
-          orderedArray.append(leftElement)
-          leftIndex += 1
-        } else if leftElement > rightElement { // 3
-          orderedArray.append(rightElement)
-          rightIndex += 1
-        } else { // 4
-          orderedArray.append(leftElement)
-          leftIndex += 1
-          orderedArray.append(rightElement)
-          rightIndex += 1
-        }
-      }
-
-      // 2
-      while leftIndex < left.count {
-        orderedArray.append(left[leftIndex])
-        leftIndex += 1
-      }
-
-      while rightIndex < right.count {
-        orderedArray.append(right[rightIndex])
-        rightIndex += 1
-      }
-      
-      return orderedArray
-    }
 }
 

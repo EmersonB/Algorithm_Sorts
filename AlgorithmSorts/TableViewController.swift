@@ -9,7 +9,7 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-    let sorts = ["Merge Sort"]
+    let sorts = ["Merge Sort","Quick Sort","Insertion Sort"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +17,7 @@ class TableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        self.navigationItem.title = "Choose a Sort!"
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
@@ -42,7 +43,18 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         // Segue to the second view controller
-        self.performSegue(withIdentifier: "mergeSegue", sender: self)
+        let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            self.performSegue(withIdentifier: "mergeSegue", sender: cell)
+        }
+        else if indexPath.row == 1{
+            self.performSegue(withIdentifier: "quickSegue", sender: cell)
+        }
+        else if indexPath.row == 2{
+            self.performSegue(withIdentifier: "insertionSegue", sender: cell)
+        }
+        
     }
     
     /*
